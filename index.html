@@ -1,22 +1,53 @@
-<div class="image-search-modal" id="imageSearchModal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="search-section">
-            <input type="text" id="imageSearchInput" placeholder="نام تصویر مورد نظر را وارد کنید...">
-            <button onclick="searchImage()">جستجو</button>
-        </div>
-        <div class="image-results" id="imageResults">
-            <!-- نتایج جستجو اینجا نمایش داده می‌شوند -->
-        </div>
-        <div class="loading" id="searchLoading">
-            <div class="spinner"></div>
-            <span>در حال جستجو...</span>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبدیل نام به تصویر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #imageContainer {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2>نام را وارد کنید تا تصویر دریافت کنید</h2>
+    <input type="text" id="nameInput" placeholder="نام خود را وارد کنید...">
+    <button onclick="fetchImage()">دریافت تصویر</button>
+    <div id="imageContainer"></div>
 
-<!-- اضافه کردن دکمه جستجوی تصویر به منوی اصلی -->
-<button class="image-search-btn" onclick="showImageSearch()">
-    <i class="fas fa-image"></i>
-    جستجوی تصویر
-</button>
+    <script>
+        function fetchImage() {
+            let name = document.getElementById('nameInput').value.trim();
+            if (name === '') {
+                alert('لطفاً یک نام وارد کنید!');
+                return;
+            }
+            
+            let imageUrl = `https://robohash.org/${encodeURIComponent(name)}.png?size=300x300`;
+            
+            document.getElementById('imageContainer').innerHTML = `<img src="${imageUrl}" alt="Generated Image">`;
+        }
+    </script>
+</body>
+</html>
