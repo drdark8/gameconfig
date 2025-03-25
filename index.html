@@ -1,0 +1,22 @@
+<div class="image-search-modal" id="imageSearchModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="search-section">
+            <input type="text" id="imageSearchInput" placeholder="نام تصویر مورد نظر را وارد کنید...">
+            <button onclick="searchImage()">جستجو</button>
+        </div>
+        <div class="image-results" id="imageResults">
+            <!-- نتایج جستجو اینجا نمایش داده می‌شوند -->
+        </div>
+        <div class="loading" id="searchLoading">
+            <div class="spinner"></div>
+            <span>در حال جستجو...</span>
+        </div>
+    </div>
+</div>
+
+<!-- اضافه کردن دکمه جستجوی تصویر به منوی اصلی -->
+<button class="image-search-btn" onclick="showImageSearch()">
+    <i class="fas fa-image"></i>
+    جستجوی تصویر
+</button>
